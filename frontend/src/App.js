@@ -538,7 +538,13 @@ const NarutoGame = () => {
                 }
               })()}
             </button>
-            {loadCharacter() && (
+            {(() => {
+              try {
+                return loadCharacter();
+              } catch {
+                return false;
+              }
+            })() && (
               <button 
                 className="btn-secondary"
                 onClick={() => setCurrentScreen('name')}
