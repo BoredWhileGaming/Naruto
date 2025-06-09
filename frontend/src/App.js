@@ -1013,7 +1013,7 @@ const NarutoGame = () => {
     } catch (error) {
       console.error('Error in save effect:', error);
     }
-  }, [character]);
+  }, [character.name, character.level, character.xp, character.money, character.clan, character.village]);
 
   return (
     <div className="game-container">
