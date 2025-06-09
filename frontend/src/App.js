@@ -527,7 +527,9 @@ const NarutoGame = () => {
               className="btn-primary"
               onClick={() => {
                 try {
-                  if (loadCharacter()) {
+                  const savedChar = loadCharacter();
+                  if (savedChar) {
+                    setCharacter(savedChar);
                     setCurrentScreen('village');
                   } else {
                     setCurrentScreen('name');
@@ -538,21 +540,9 @@ const NarutoGame = () => {
                 }
               }}
             >
-              ⚡ {(() => {
-                try {
-                  return loadCharacter() ? 'Continue Adventure' : 'Begin New Adventure';
-                } catch {
-                  return 'Begin New Adventure';
-                }
-              })()}
+              ⚡ {checkForSavedCharacter() ? 'Continue Adventure' : 'Begin New Adventure'}
             </button>
-            {(() => {
-              try {
-                return loadCharacter();
-              } catch {
-                return false;
-              }
-            })() && (
+            {checkForSavedCharacter() && (
               <button 
                 className="btn-secondary"
                 onClick={() => setCurrentScreen('name')}
