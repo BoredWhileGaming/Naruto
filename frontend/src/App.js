@@ -35,6 +35,7 @@ const NarutoGame = () => {
   const [gameLog, setGameLog] = useState([]);
   const [typingText, setTypingText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [hasLoadedCharacter, setHasLoadedCharacter] = useState(false);
 
   const clans = [
     { 
