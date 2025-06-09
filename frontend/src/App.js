@@ -466,12 +466,19 @@ const NarutoGame = () => {
           mergedChar.combat = defaultChar.combat;
         }
         
-        setCharacter(mergedChar);
-        return true;
+        return mergedChar;
       }
-      return false;
+      return null;
     } catch (error) {
       console.error('Error loading character:', error);
+      return null;
+    }
+  };
+
+  const checkForSavedCharacter = () => {
+    try {
+      return localStorage.getItem('narutoCharacter') !== null;
+    } catch {
       return false;
     }
   };
