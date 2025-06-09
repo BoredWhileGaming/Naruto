@@ -415,6 +415,7 @@ const NarutoGame = () => {
         if (callback) callback();
       }
     }, 50);
+    return timer;
   };
 
   const saveCharacter = () => {
