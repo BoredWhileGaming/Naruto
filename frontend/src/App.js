@@ -982,16 +982,21 @@ const NarutoGame = () => {
   );
 
   const renderScreen = () => {
-    switch (currentScreen) {
-      case 'welcome': return <WelcomeScreen />;
-      case 'name': return <NameScreen />;
-      case 'clan': return <ClanScreen />;
-      case 'village': return <VillageScreen />;
-      case 'missions': return <MissionsScreen />;
-      case 'battle': return <BattleScreen />;
-      case 'training': return <TrainingScreen />;
-      case 'profile': return <ProfileScreen />;
-      default: return <VillageScreen />;
+    try {
+      switch (currentScreen) {
+        case 'welcome': return <WelcomeScreen />;
+        case 'name': return <NameScreen />;
+        case 'clan': return <ClanScreen />;
+        case 'village': return <VillageScreen />;
+        case 'missions': return <MissionsScreen />;
+        case 'battle': return <BattleScreen />;
+        case 'training': return <TrainingScreen />;
+        case 'profile': return <ProfileScreen />;
+        default: return <WelcomeScreen />;
+      }
+    } catch (error) {
+      console.error('Error rendering screen:', error);
+      return <WelcomeScreen />;
     }
   };
 
