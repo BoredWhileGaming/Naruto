@@ -518,14 +518,25 @@ const NarutoGame = () => {
             <button 
               className="btn-primary"
               onClick={() => {
-                if (loadCharacter()) {
-                  setCurrentScreen('village');
-                } else {
+                try {
+                  if (loadCharacter()) {
+                    setCurrentScreen('village');
+                  } else {
+                    setCurrentScreen('name');
+                  }
+                } catch (error) {
+                  console.error('Error on button click:', error);
                   setCurrentScreen('name');
                 }
               }}
             >
-              ⚡ {loadCharacter() ? 'Continue Adventure' : 'Begin New Adventure'}
+              ⚡ {(() => {
+                try {
+                  return loadCharacter() ? 'Continue Adventure' : 'Begin New Adventure';
+                } catch {
+                  return 'Begin New Adventure';
+                }
+              })()}
             </button>
             {loadCharacter() && (
               <button 
