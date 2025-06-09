@@ -1001,8 +1001,15 @@ const NarutoGame = () => {
   };
 
   useEffect(() => {
-    const timer = typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!");
-    return () => clearInterval(timer);
+    let timer;
+    try {
+      timer = typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!");
+    } catch (error) {
+      console.error('Error in typewriter effect:', error);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
   }, []);
 
   useEffect(() => {
