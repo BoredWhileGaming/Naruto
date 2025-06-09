@@ -665,7 +665,8 @@ body {
 
 .learn-card:hover:not(.disabled) {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(30, 30, 45, 1);
+  border-color: rgba(255, 107, 53, 0.6);
 }
 
 .learn-card.disabled {
