@@ -1006,8 +1006,12 @@ const NarutoGame = () => {
   }, []);
 
   useEffect(() => {
-    if (character.name) {
-      saveCharacter();
+    try {
+      if (character.name) {
+        saveCharacter();
+      }
+    } catch (error) {
+      console.error('Error in save effect:', error);
     }
   }, [character]);
 
