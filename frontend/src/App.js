@@ -1007,13 +1007,13 @@ const NarutoGame = () => {
 
   useEffect(() => {
     try {
-      if (character.name) {
+      if (character.name && !hasLoadedCharacter) {
         saveCharacter();
       }
     } catch (error) {
       console.error('Error in save effect:', error);
     }
-  }, [character.name, character.level, character.xp, character.money, character.clan, character.village]);
+  }, [character.name, character.level, character.xp, character.money, character.clan, character.village, saveCharacter, hasLoadedCharacter]);
 
   return (
     <div className="game-container">
