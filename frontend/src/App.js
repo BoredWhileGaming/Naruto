@@ -950,7 +950,8 @@ const NarutoGame = () => {
   };
 
   useEffect(() => {
-    typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!");
+    const timer = typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!");
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
