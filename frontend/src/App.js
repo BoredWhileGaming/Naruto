@@ -499,11 +499,12 @@ const NarutoGame = () => {
 
   const selectClan = (selectedClan) => {
     const clan = clans.find(c => c.name === selectedClan);
-    setCharacter(prev => ({
-      ...prev,
+    const newCharacter = {
+      ...character,
       clan: selectedClan,
       jutsu: clan.jutsu.slice(0, 2).map(name => ({ name, damage: 25, cost: 15, type: 'ninjutsu' }))
-    }));
+    };
+    setCharacter(newCharacter);
     setCurrentScreen('village');
   };
 
