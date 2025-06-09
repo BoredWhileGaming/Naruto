@@ -255,7 +255,7 @@ const NarutoGame = () => {
       
       if (leveledUp) {
         addToLog(`🎉 Level up! You are now level ${newLevel}!`);
-        return {
+        const updatedChar = {
           ...prev,
           xp: newXP,
           level: newLevel,
@@ -269,6 +269,7 @@ const NarutoGame = () => {
             chakraPoints: prev.combat.maxChakra + 10
           }
         };
+        return updatedChar;
       }
       
       return {
