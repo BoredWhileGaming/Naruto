@@ -40,53 +40,59 @@ const NarutoGame = () => {
     { 
       name: 'Uchiha', 
       bonus: 'chakra', 
-      description: 'Masters of fire jutsu and Sharingan', 
+      description: 'Masters of fire jutsu and Sharingan wielders with legendary visual prowess', 
       jutsu: ['Fireball Jutsu', 'Phoenix Flower Jutsu', 'Dragon Fire Technique'],
-      advanced: ['Chidori', 'Amaterasu', 'Susanoo']
+      advanced: ['Chidori', 'Amaterasu', 'Susanoo'],
+      icon: '🔥'
     },
     { 
       name: 'Hyuga', 
       bonus: 'speed', 
-      description: 'Gentle Fist masters with Byakugan', 
+      description: 'Gentle Fist masters with Byakugan, seeing through all deceptions', 
       jutsu: ['Gentle Fist', 'Eight Trigrams Palm', 'Byakugan'],
-      advanced: ['Eight Trigrams 64 Palms', 'Rotation', 'Air Palm']
+      advanced: ['Eight Trigrams 64 Palms', 'Rotation', 'Air Palm'],
+      icon: '👁️'
     },
     { 
       name: 'Uzumaki', 
       bonus: 'stamina', 
-      description: 'Massive chakra reserves and sealing jutsu', 
+      description: 'Possessors of massive chakra reserves and ancient sealing jutsu', 
       jutsu: ['Shadow Clone Jutsu', 'Sealing Technique', 'Chakra Chains'],
-      advanced: ['Multiple Shadow Clones', 'Four Symbols Seal', 'Adamantine Chains']
+      advanced: ['Multiple Shadow Clones', 'Four Symbols Seal', 'Adamantine Chains'],
+      icon: '🌀'
     },
     { 
       name: 'Nara', 
       bonus: 'intelligence', 
-      description: 'Strategic geniuses with shadow manipulation', 
+      description: 'Strategic geniuses who manipulate shadows and think 200 moves ahead', 
       jutsu: ['Shadow Bind', 'Shadow Imitation', 'Shadow Neck Bind'],
-      advanced: ['Shadow Sewing', 'Shadow Gathering', 'Shadow Shadow Technique']
+      advanced: ['Shadow Sewing', 'Shadow Gathering', 'Shadow Shadow Technique'],
+      icon: '🌑'
     },
     { 
       name: 'Akimichi', 
       bonus: 'strength', 
-      description: 'Size manipulation and immense physical power', 
+      description: 'Size manipulation masters with immense physical power and appetite', 
       jutsu: ['Expansion Jutsu', 'Human Boulder', 'Partial Expansion'],
-      advanced: ['Super Expansion', 'Butterfly Mode', 'Calorie Control']
+      advanced: ['Super Expansion', 'Butterfly Mode', 'Calorie Control'],
+      icon: '💪'
     },
     { 
       name: 'Inuzuka', 
       bonus: 'speed', 
-      description: 'Beast-like fighting with canine partners', 
+      description: 'Beast-like fighters with canine partners and feral instincts', 
       jutsu: ['Fang Over Fang', 'Beast Clone', 'Four Legs Technique'],
-      advanced: ['Two-Headed Wolf', 'Tunneling Fang', 'Wolf Fang Over Fang']
+      advanced: ['Two-Headed Wolf', 'Tunneling Fang', 'Wolf Fang Over Fang'],
+      icon: '🐺'
     }
   ];
 
   const villages = [
-    { name: 'Konohagakure', symbol: '🍃', description: 'Village Hidden in the Leaves' },
-    { name: 'Sunagakure', symbol: '🏜️', description: 'Village Hidden in the Sand' },
-    { name: 'Kirigakure', symbol: '🌊', description: 'Village Hidden in the Mist' },
-    { name: 'Kumogakure', symbol: '⛈️', description: 'Village Hidden in the Clouds' },
-    { name: 'Iwagakure', symbol: '🗻', description: 'Village Hidden in the Rocks' }
+    { name: 'Konohagakure', symbol: '🍃', description: 'Village Hidden in the Leaves - The Will of Fire burns eternal' },
+    { name: 'Sunagakure', symbol: '🏜️', description: 'Village Hidden in the Sand - Masters of desert warfare' },
+    { name: 'Kirigakure', symbol: '🌊', description: 'Village Hidden in the Mist - Silent assassins of the water' },
+    { name: 'Kumogakure', symbol: '⛈️', description: 'Village Hidden in the Clouds - Lightning fast and powerful' },
+    { name: 'Iwagakure', symbol: '🗻', description: 'Village Hidden in the Rocks - Unwavering as stone itself' }
   ];
 
   const jutsuDatabase = {
@@ -142,7 +148,7 @@ const NarutoGame = () => {
     {
       id: 1,
       name: 'Find the Lost Cat',
-      description: 'A village cat has gone missing. Find and return it safely.',
+      description: 'A village cat has gone missing. Search the nearby areas and return it safely to its worried owner.',
       difficulty: 'D-Rank',
       xpReward: 50,
       moneyReward: 100,
@@ -152,7 +158,7 @@ const NarutoGame = () => {
     {
       id: 2,
       name: 'Escort the Merchant',
-      description: 'Escort a merchant safely to the next village.',
+      description: 'Escort a wealthy merchant safely through bandit-infested roads to the next village.',
       difficulty: 'C-Rank',
       xpReward: 100,
       moneyReward: 200,
@@ -163,7 +169,7 @@ const NarutoGame = () => {
     {
       id: 3,
       name: 'Bandits in the Forest',
-      description: 'Clear out bandits that have been terrorizing travelers.',
+      description: 'Clear out a group of bandits who have been terrorizing travelers on the main road.',
       difficulty: 'C-Rank',
       xpReward: 150,
       moneyReward: 300,
@@ -174,7 +180,7 @@ const NarutoGame = () => {
     {
       id: 4,
       name: 'Retrieve Secret Scroll',
-      description: 'A secret jutsu scroll has been stolen. Retrieve it from enemy ninja.',
+      description: 'A secret jutsu scroll has been stolen by enemy ninja. Infiltrate their hideout and retrieve it.',
       difficulty: 'B-Rank',
       xpReward: 250,
       moneyReward: 500,
@@ -185,7 +191,7 @@ const NarutoGame = () => {
     {
       id: 5,
       name: 'Training with Sensei',
-      description: 'Undergo special training to improve your abilities.',
+      description: 'Undergo intensive training with a skilled sensei to improve your combat abilities.',
       difficulty: 'Training',
       xpReward: 75,
       moneyReward: 0,
@@ -290,7 +296,6 @@ const NarutoGame = () => {
       let newEnemy = { ...prev.enemy };
       let newCharacter = { ...character };
 
-      // Player turn
       if (playerJutsu) {
         const damage = Math.floor(playerJutsu.damage * (character.stats.strength / 10));
         newEnemy.hp = Math.max(0, newEnemy.hp - damage);
@@ -298,7 +303,6 @@ const NarutoGame = () => {
         newLog.push(`You used ${playerJutsu.name}! Dealt ${damage} damage.`);
       }
 
-      // Check if enemy defeated
       if (newEnemy.hp <= 0) {
         newLog.push(`${newEnemy.name} is defeated!`);
         gainXP(newEnemy.xpReward);
@@ -313,12 +317,10 @@ const NarutoGame = () => {
         return null;
       }
 
-      // Enemy turn
       const enemyDamage = Math.floor(newEnemy.strength * (Math.random() * 0.5 + 0.75));
       newCharacter.combat.hp = Math.max(0, newCharacter.combat.hp - enemyDamage);
       newLog.push(`${newEnemy.name} attacks! You take ${enemyDamage} damage.`);
 
-      // Check if player defeated
       if (newCharacter.combat.hp <= 0) {
         newLog.push('You have been defeated...');
         setCharacter(prev => ({
@@ -347,20 +349,17 @@ const NarutoGame = () => {
     setCurrentScreen('mission');
     
     if (mission.type === 'training') {
-      // Training mission - just gain XP
       setTimeout(() => {
         gainXP(mission.xpReward);
         addToLog(`Training complete! Gained ${mission.xpReward} XP.`);
         completeMission(mission);
       }, 2000);
     } else if (mission.enemyEncounter) {
-      // Mission with combat
       setTimeout(() => {
         const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
         startBattle(randomEnemy);
       }, 3000);
     } else {
-      // Simple mission - complete after delay
       setTimeout(() => {
         gainXP(mission.xpReward);
         setCharacter(prev => ({ ...prev, money: prev.money + mission.moneyReward }));
@@ -403,7 +402,6 @@ const NarutoGame = () => {
     addToLog('Health and chakra restored!');
   };
 
-  // Existing functions...
   const typeWriter = (text, callback) => {
     setIsTyping(true);
     setTypingText('');
@@ -427,7 +425,6 @@ const NarutoGame = () => {
     const saved = localStorage.getItem('narutoCharacter');
     if (saved) {
       const loadedChar = JSON.parse(saved);
-      // Ensure combat stats exist for older saves
       if (!loadedChar.combat) {
         loadedChar.combat = {
           hp: 100,
@@ -471,38 +468,25 @@ const NarutoGame = () => {
     setCurrentScreen('village');
   };
 
-  // Screen Components...
+  // Screen Components
   const WelcomeScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          🥷 Naruto RPG Adventure
+          <div className="header-subtitle">Ultimate Ninja Experience</div>
         </div>
-        <div className="terminal-title">Naruto RPG Adventure</div>
       </div>
-      <div className="terminal-content">
-        <pre className="ascii-art">
-{`
-    ███╗   ██╗ █████╗ ██████╗ ██╗   ██╗████████╗ ██████╗ 
-    ████╗  ██║██╔══██╗██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗
-    ██╔██╗ ██║███████║██████╔╝██║   ██║   ██║   ██║   ██║
-    ██║╚██╗██║██╔══██║██╔══██╗██║   ██║   ██║   ██║   ██║
-    ██║ ╚████║██║  ██║██║  ██║╚██████╔╝   ██║   ╚██████╔╝
-    ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ 
-                                                          
-                    RPG ADVENTURE GAME
-`}
-        </pre>
-        <div className="terminal-text">
-          <p className="text-orange-400 mb-4">Welcome to the Ultimate Ninja Adventure...</p>
-          <p className="text-blue-300 mb-6">
-            {typingText || "Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Your legend starts here!"}
+      <div className="modern-content">
+        <div className="welcome-container">
+          <h1 className="hero-title">NARUTO</h1>
+          <p className="hero-subtitle">Ultimate RPG Adventure</p>
+          <p className="hero-description">
+            {typingText || "Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!"}
           </p>
-          <div className="menu-options">
+          <div className="btn-group">
             <button 
-              className="menu-button"
+              className="btn-primary"
               onClick={() => {
                 if (loadCharacter()) {
                   setCurrentScreen('village');
@@ -511,14 +495,14 @@ const NarutoGame = () => {
                 }
               }}
             >
-              {loadCharacter() ? '► Continue Adventure' : '► Begin New Adventure'}
+              ⚡ {loadCharacter() ? 'Continue Adventure' : 'Begin New Adventure'}
             </button>
             {loadCharacter() && (
               <button 
-                className="menu-button"
+                className="btn-secondary"
                 onClick={() => setCurrentScreen('name')}
               >
-                ► Start Fresh Adventure
+                🔄 Start Fresh Adventure
               </button>
             )}
           </div>
@@ -528,40 +512,38 @@ const NarutoGame = () => {
   );
 
   const NameScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          🎭 Character Creation
+          <div className="header-subtitle">Step 1 of 3</div>
         </div>
-        <div className="terminal-title">Character Creation</div>
       </div>
-      <div className="terminal-content">
-        <div className="creation-step">
-          <h2 className="text-yellow-400 text-2xl mb-6">🎭 Who are you, young shinobi?</h2>
-          <p className="text-blue-300 mb-4">Every legend begins with a name...</p>
-          <div className="input-group">
-            <label className="text-orange-400">Enter your ninja name:</label>
+      <div className="modern-content">
+        <div className="welcome-container">
+          <h2 className="section-title">Who are you, young shinobi?</h2>
+          <p className="hero-description">Every legend begins with a name. Choose wisely, for this name will echo through the ninja world.</p>
+          <div className="form-group">
+            <label className="form-label">Enter your ninja name</label>
             <input
               type="text"
               value={character.name}
               onChange={(e) => setCharacter(prev => ({ ...prev, name: e.target.value }))}
-              className="ninja-input"
-              placeholder="Your ninja name..."
+              className="modern-input"
+              placeholder="Your legendary name..."
               autoFocus
             />
           </div>
-          <div className="navigation-buttons">
-            <button className="nav-button" onClick={() => setCurrentScreen('welcome')}>
+          <div className="nav-container">
+            <button className="btn-secondary" onClick={() => setCurrentScreen('welcome')}>
               ← Back
             </button>
             <button 
-              className="nav-button primary"
+              className="btn-primary"
               onClick={() => character.name.trim() && setCurrentScreen('clan')}
               disabled={!character.name.trim()}
             >
-              Continue →
+              Continue → ⚡
             </button>
           </div>
         </div>
@@ -570,40 +552,40 @@ const NarutoGame = () => {
   );
 
   const ClanScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          🏺 Clan Selection
+          <div className="header-subtitle">Step 2 of 3</div>
         </div>
-        <div className="terminal-title">Clan Selection</div>
       </div>
-      <div className="terminal-content">
-        <div className="creation-step">
-          <h2 className="text-yellow-400 text-2xl mb-6">🏺 Choose Your Clan Heritage</h2>
-          <p className="text-blue-300 mb-6">Your bloodline shapes your destiny...</p>
-          <div className="clan-grid">
+      <div className="modern-content">
+        <div className="welcome-container">
+          <h2 className="section-title">Choose Your Clan Heritage</h2>
+          <p className="hero-description">Your bloodline shapes your destiny and determines your starting abilities. Each clan offers unique jutsu and bonuses.</p>
+          <div className="card-grid">
             {clans.map((clan) => (
               <div 
                 key={clan.name}
-                className="clan-card"
+                className="selection-card"
                 onClick={() => selectClan(clan.name)}
               >
-                <h3 className="text-orange-400 text-lg font-bold">{clan.name}</h3>
-                <p className="text-gray-300 text-sm mb-2">{clan.description}</p>
-                <p className="text-green-400 text-xs mb-2">Bonus: +5 {clan.bonus}</p>
-                <div className="jutsu-list">
-                  <p className="text-blue-300 text-xs mb-1">Starting Jutsu:</p>
+                <div className="card-title">
+                  {clan.icon} {clan.name}
+                </div>
+                <div className="card-description">{clan.description}</div>
+                <div className="card-bonus">Bonus: +5 {clan.bonus}</div>
+                <div className="tag-list">
+                  <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', marginBottom: '6px'}}>Starting Jutsu:</p>
                   {clan.jutsu.slice(0, 2).map((jutsu, idx) => (
-                    <span key={idx} className="jutsu-tag">{jutsu}</span>
+                    <span key={idx} className="tag">{jutsu}</span>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-          <div className="navigation-buttons">
-            <button className="nav-button" onClick={() => setCurrentScreen('name')}>
+          <div className="nav-container">
+            <button className="btn-secondary" onClick={() => setCurrentScreen('name')}>
               ← Back
             </button>
           </div>
@@ -613,72 +595,91 @@ const NarutoGame = () => {
   );
 
   const VillageScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          🏘️ {character.village || 'Hidden Village'}
+          <div className="header-subtitle">Ninja Hub</div>
         </div>
-        <div className="terminal-title">{character.village || 'Hidden Village'}</div>
       </div>
-      <div className="terminal-content">
-        <div className="village-hub">
-          <div className="village-header">
-            <h2 className="text-yellow-400 text-2xl mb-2">
-              🏘️ Welcome to {character.village || 'Your Village'}
-            </h2>
-            <div className="character-status">
-              <div className="status-row">
-                <span className="text-orange-400">Level {character.level} {character.rank}</span>
-                <span className="text-green-400">{character.money} Ryo</span>
-              </div>
-              <div className="health-bars">
-                <div className="health-bar">
-                  <span className="text-red-400">HP: {character.combat.hp}/{character.combat.maxHp}</span>
-                  <div className="bar">
-                    <div className="bar-fill hp" style={{width: `${(character.combat.hp/character.combat.maxHp)*100}%`}}></div>
-                  </div>
-                </div>
-                <div className="health-bar">
-                  <span className="text-blue-400">Chakra: {character.combat.chakraPoints}/{character.combat.maxChakra}</span>
-                  <div className="bar">
-                    <div className="bar-fill chakra" style={{width: `${(character.combat.chakraPoints/character.combat.maxChakra)*100}%`}}></div>
-                  </div>
+      <div className="modern-content">
+        <div className="village-container">
+          <div className="status-panel">
+            <div className="status-header">
+              <div className="character-info">
+                <h2>🥷 {character.name}</h2>
+                <div className="character-meta">
+                  <span>Level {character.level} {character.rank}</span>
+                  <span>{character.clan} Clan</span>
+                  <span>Missions: {character.completedMissions.length}</span>
                 </div>
               </div>
-              <div className="xp-bar">
-                <span className="text-yellow-400">XP: {character.xp} / {character.level * 100}</span>
-                <div className="bar">
-                  <div className="bar-fill xp" style={{width: `${(character.xp % 100)}%`}}></div>
+              <div className="money-display">
+                💰 {character.money} Ryo
+              </div>
+            </div>
+            
+            <div className="stats-grid">
+              <div>
+                <div className="stat-item">
+                  <span className="stat-label">Health</span>
+                  <span className="stat-value">{character.combat.hp}/{character.combat.maxHp}</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill hp" style={{width: `${(character.combat.hp/character.combat.maxHp)*100}%`}}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="stat-item">
+                  <span className="stat-label">Chakra</span>
+                  <span className="stat-value">{character.combat.chakraPoints}/{character.combat.maxChakra}</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill chakra" style={{width: `${(character.combat.chakraPoints/character.combat.maxChakra)*100}%`}}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="stat-item">
+                  <span className="stat-label">Experience</span>
+                  <span className="stat-value">{character.xp} / {character.level * 100}</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill xp" style={{width: `${(character.xp % 100)}%`}}></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="village-options">
-            <button className="village-button" onClick={() => setCurrentScreen('missions')}>
-              📜 Mission Board
-            </button>
-            <button className="village-button" onClick={() => setCurrentScreen('training')}>
-              🥋 Training Grounds
-            </button>
-            <button className="village-button" onClick={() => setCurrentScreen('shop')}>
-              🏪 Ninja Shop
-            </button>
-            <button className="village-button" onClick={() => setCurrentScreen('profile')}>
-              👤 Character Profile
-            </button>
-            <button className="village-button" onClick={restoreHealth}>
-              🏥 Rest & Recover
-            </button>
+          <div className="options-grid">
+            <div className="option-card" onClick={() => setCurrentScreen('missions')}>
+              <span className="option-icon">📜</span>
+              <div className="option-title">Mission Board</div>
+            </div>
+            <div className="option-card" onClick={() => setCurrentScreen('training')}>
+              <span className="option-icon">🥋</span>
+              <div className="option-title">Training Grounds</div>
+            </div>
+            <div className="option-card" onClick={() => setCurrentScreen('shop')}>
+              <span className="option-icon">🏪</span>
+              <div className="option-title">Ninja Shop</div>
+            </div>
+            <div className="option-card" onClick={() => setCurrentScreen('profile')}>
+              <span className="option-icon">👤</span>
+              <div className="option-title">Character Profile</div>
+            </div>
+            <div className="option-card" onClick={restoreHealth}>
+              <span className="option-icon">🏥</span>
+              <div className="option-title">Rest & Recover</div>
+            </div>
           </div>
 
           {gameLog.length > 0 && (
             <div className="game-log">
-              <h3 className="text-green-400 mb-2">Recent Events:</h3>
+              <div className="log-title">📋 Recent Events</div>
               {gameLog.map((log, idx) => (
-                <p key={idx} className="log-entry">{log}</p>
+                <div key={idx} className="log-entry">{log}</div>
               ))}
             </div>
           )}
@@ -688,43 +689,42 @@ const NarutoGame = () => {
   );
 
   const MissionsScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          📜 Mission Board
+          <div className="header-subtitle">Available Assignments</div>
         </div>
-        <div className="terminal-title">Mission Board</div>
       </div>
-      <div className="terminal-content">
-        <div className="missions-hub">
-          <h2 className="text-yellow-400 text-2xl mb-6">📜 Available Missions</h2>
-          <div className="missions-grid">
+      <div className="modern-content">
+        <div className="village-container">
+          <h2 className="section-title">Choose Your Mission</h2>
+          <div className="card-grid">
             {missions.filter(m => !character.completedMissions.includes(m.id)).map((mission) => (
               <div key={mission.id} className="mission-card">
                 <div className="mission-header">
-                  <h3 className="text-orange-400">{mission.name}</h3>
-                  <span className={`difficulty ${mission.difficulty.toLowerCase().replace('-', '')}`}>
+                  <div className="mission-title">{mission.name}</div>
+                  <div className={`difficulty-badge ${mission.difficulty.toLowerCase().replace('-', '')}`}>
                     {mission.difficulty}
-                  </span>
+                  </div>
                 </div>
-                <p className="text-gray-300 mb-3">{mission.description}</p>
+                <div className="mission-description">{mission.description}</div>
                 <div className="mission-rewards">
-                  <span className="text-yellow-400">XP: {mission.xpReward}</span>
-                  <span className="text-green-400">Ryo: {mission.moneyReward}</span>
+                  <span className="reward-xp">⚡ {mission.xpReward} XP</span>
+                  <span className="reward-money">💰 {mission.moneyReward} Ryo</span>
                 </div>
                 <button 
-                  className="mission-accept-btn"
+                  className="btn-primary"
                   onClick={() => startMission(mission)}
+                  style={{width: '100%', marginTop: '12px'}}
                 >
-                  Accept Mission
+                  Accept Mission ⚡
                 </button>
               </div>
             ))}
           </div>
-          <div className="navigation-buttons">
-            <button className="nav-button" onClick={() => setCurrentScreen('village')}>
+          <div className="nav-container">
+            <button className="btn-secondary" onClick={() => setCurrentScreen('village')}>
               ← Back to Village
             </button>
           </div>
@@ -737,69 +737,69 @@ const NarutoGame = () => {
     if (!battleState) return null;
     
     return (
-      <div className="terminal-screen">
-        <div className="terminal-header">
-          <div className="terminal-buttons">
-            <div className="terminal-button red"></div>
-            <div className="terminal-button yellow"></div>
-            <div className="terminal-button green"></div>
+      <div className="modern-card">
+        <div className="modern-header">
+          <div className="header-title">
+            ⚔️ Combat
+            <div className="header-subtitle">Battle Mode</div>
           </div>
-          <div className="terminal-title">Combat</div>
         </div>
-        <div className="terminal-content">
-          <div className="battle-arena">
-            <h2 className="text-red-400 text-2xl mb-6">⚔️ Battle!</h2>
+        <div className="modern-content">
+          <div className="battle-container">
+            <h2 className="battle-title">⚔️ BATTLE!</h2>
             
-            <div className="battle-status">
-              <div className="combatant player">
-                <h3 className="text-blue-400">{character.name}</h3>
-                <div className="health-bar">
-                  <span>HP: {character.combat.hp}/{character.combat.maxHp}</span>
-                  <div className="bar">
-                    <div className="bar-fill hp" style={{width: `${(character.combat.hp/character.combat.maxHp)*100}%`}}></div>
-                  </div>
+            <div className="combatants">
+              <div className="combatant">
+                <div className="combatant-name">{character.name}</div>
+                <div className="stat-item">
+                  <span className="stat-label">HP</span>
+                  <span className="stat-value">{character.combat.hp}/{character.combat.maxHp}</span>
                 </div>
-                <div className="health-bar">
-                  <span>Chakra: {character.combat.chakraPoints}/{character.combat.maxChakra}</span>
-                  <div className="bar">
-                    <div className="bar-fill chakra" style={{width: `${(character.combat.chakraPoints/character.combat.maxChakra)*100}%`}}></div>
-                  </div>
+                <div className="progress-bar">
+                  <div className="progress-fill hp" style={{width: `${(character.combat.hp/character.combat.maxHp)*100}%`}}></div>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">Chakra</span>
+                  <span className="stat-value">{character.combat.chakraPoints}/{character.combat.maxChakra}</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill chakra" style={{width: `${(character.combat.chakraPoints/character.combat.maxChakra)*100}%`}}></div>
                 </div>
               </div>
               
-              <div className="vs-indicator">⚔️</div>
+              <div className="battle-vs">⚔️</div>
               
-              <div className="combatant enemy">
-                <h3 className="text-red-400">{battleState.enemy.name}</h3>
-                <div className="health-bar">
-                  <span>HP: {battleState.enemy.hp}/{battleState.enemy.maxHp}</span>
-                  <div className="bar">
-                    <div className="bar-fill hp" style={{width: `${(battleState.enemy.hp/battleState.enemy.maxHp)*100}%`}}></div>
-                  </div>
+              <div className="combatant">
+                <div className="combatant-name">{battleState.enemy.name}</div>
+                <div className="stat-item">
+                  <span className="stat-label">HP</span>
+                  <span className="stat-value">{battleState.enemy.hp}/{battleState.enemy.maxHp}</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill hp" style={{width: `${(battleState.enemy.hp/battleState.enemy.maxHp)*100}%`}}></div>
                 </div>
               </div>
             </div>
 
             <div className="battle-log">
               {battleState.log.map((entry, idx) => (
-                <p key={idx} className="log-entry">{entry}</p>
+                <div key={idx} className="log-entry">{entry}</div>
               ))}
             </div>
 
             {battleState.turn === 'player' && (
               <div className="battle-actions">
-                <h3 className="text-yellow-400 mb-3">Choose your action:</h3>
+                <h3 className="action-title">Choose your action:</h3>
                 <div className="jutsu-grid">
                   {character.jutsu.map((jutsu, idx) => (
-                    <button
+                    <div
                       key={idx}
-                      className={`jutsu-button ${character.combat.chakraPoints < jutsu.cost ? 'disabled' : ''}`}
-                      onClick={() => executeBattleTurn(jutsu)}
-                      disabled={character.combat.chakraPoints < jutsu.cost}
+                      className={`jutsu-card ${character.combat.chakraPoints < jutsu.cost ? 'disabled' : ''}`}
+                      onClick={() => character.combat.chakraPoints >= jutsu.cost && executeBattleTurn(jutsu)}
                     >
-                      <span className="jutsu-name">{jutsu.name}</span>
-                      <span className="jutsu-cost">Cost: {jutsu.cost}</span>
-                    </button>
+                      <div className="jutsu-name">{jutsu.name}</div>
+                      <div className="jutsu-cost">Cost: {jutsu.cost} chakra</div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -811,52 +811,45 @@ const NarutoGame = () => {
   };
 
   const TrainingScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          🥋 Training Grounds
+          <div className="header-subtitle">Skill Development</div>
         </div>
-        <div className="terminal-title">Training Grounds</div>
       </div>
-      <div className="terminal-content">
-        <div className="training-hub">
-          <h2 className="text-yellow-400 text-2xl mb-6">🥋 Training Grounds</h2>
-          
-          <div className="training-section">
-            <h3 className="text-orange-400 text-xl mb-4">Learn New Jutsu</h3>
-            <div className="jutsu-learn-grid">
-              {getAvailableJutsu().map((jutsu, idx) => {
-                const cost = jutsu.levelReq ? jutsu.levelReq * 50 : 100;
-                const canAfford = character.money >= cost;
-                const meetLevel = !jutsu.levelReq || character.level >= jutsu.levelReq;
-                
-                return (
-                  <div key={idx} className={`jutsu-learn-card ${!canAfford || !meetLevel ? 'disabled' : ''}`}>
-                    <h4 className="text-blue-400">{jutsu.name}</h4>
-                    <p className="text-gray-300">Damage: {jutsu.damage}</p>
-                    <p className="text-gray-300">Cost: {jutsu.cost} chakra</p>
-                    <p className="text-gray-300">Type: {jutsu.type}</p>
-                    {jutsu.levelReq && (
-                      <p className="text-yellow-400">Requires Level {jutsu.levelReq}</p>
-                    )}
-                    <p className="text-green-400">Price: {cost} Ryo</p>
-                    <button
-                      className="learn-button"
-                      onClick={() => learnJutsu(jutsu)}
-                      disabled={!canAfford || !meetLevel}
-                    >
-                      {!meetLevel ? 'Level Required' : !canAfford ? 'Insufficient Funds' : 'Learn Jutsu'}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+      <div className="modern-content">
+        <div className="village-container">
+          <h2 className="section-title">Learn New Jutsu</h2>
+          <div className="learn-grid">
+            {getAvailableJutsu().map((jutsu, idx) => {
+              const cost = jutsu.levelReq ? jutsu.levelReq * 50 : 100;
+              const canAfford = character.money >= cost;
+              const meetLevel = !jutsu.levelReq || character.level >= jutsu.levelReq;
+              
+              return (
+                <div key={idx} className={`learn-card ${!canAfford || !meetLevel ? 'disabled' : ''}`}>
+                  <div className="card-title">{jutsu.name}</div>
+                  <div className="jutsu-info">Damage: {jutsu.damage}</div>
+                  <div className="jutsu-info">Chakra Cost: {jutsu.cost}</div>
+                  <div className="jutsu-info">Type: {jutsu.type}</div>
+                  {jutsu.levelReq && (
+                    <div className="jutsu-info">Required Level: {jutsu.levelReq}</div>
+                  )}
+                  <div className="learn-price">💰 {cost} Ryo</div>
+                  <button
+                    className="learn-button"
+                    onClick={() => learnJutsu(jutsu)}
+                    disabled={!canAfford || !meetLevel}
+                  >
+                    {!meetLevel ? 'Level Required' : !canAfford ? 'Insufficient Funds' : 'Learn Jutsu ⚡'}
+                  </button>
+                </div>
+              );
+            })}
           </div>
-
-          <div className="navigation-buttons">
-            <button className="nav-button" onClick={() => setCurrentScreen('village')}>
+          <div className="nav-container">
+            <button className="btn-secondary" onClick={() => setCurrentScreen('village')}>
               ← Back to Village
             </button>
           </div>
@@ -866,59 +859,73 @@ const NarutoGame = () => {
   );
 
   const ProfileScreen = () => (
-    <div className="terminal-screen">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <div className="terminal-button red"></div>
-          <div className="terminal-button yellow"></div>
-          <div className="terminal-button green"></div>
+    <div className="modern-card">
+      <div className="modern-header">
+        <div className="header-title">
+          👤 Ninja Profile
+          <div className="header-subtitle">Character Overview</div>
         </div>
-        <div className="terminal-title">Ninja Profile</div>
       </div>
-      <div className="terminal-content">
-        <div className="profile-display">
-          <h2 className="text-yellow-400 text-3xl mb-6">🥷 {character.name}</h2>
+      <div className="modern-content">
+        <div className="profile-container">
+          <h2 className="section-title">🥷 {character.name}</h2>
           
           <div className="profile-section">
-            <h3 className="text-orange-400 text-xl mb-3">Status</h3>
-            <div className="status-grid">
-              <p className="text-blue-300">Level: <span className="text-white">{character.level}</span></p>
-              <p className="text-blue-300">Rank: <span className="text-white">{character.rank}</span></p>
-              <p className="text-blue-300">Clan: <span className="text-white">{character.clan}</span></p>
-              <p className="text-blue-300">Village: <span className="text-white">{character.village}</span></p>
-              <p className="text-blue-300">Money: <span className="text-green-400">{character.money} Ryo</span></p>
-              <p className="text-blue-300">Missions Completed: <span className="text-white">{character.completedMissions.length}</span></p>
+            <h3 className="card-title">Status Information</h3>
+            <div className="profile-grid">
+              <div className="profile-item">
+                <span>Level</span>
+                <span>{character.level}</span>
+              </div>
+              <div className="profile-item">
+                <span>Rank</span>
+                <span>{character.rank}</span>
+              </div>
+              <div className="profile-item">
+                <span>Clan</span>
+                <span>{character.clan}</span>
+              </div>
+              <div className="profile-item">
+                <span>Village</span>
+                <span>{character.village}</span>
+              </div>
+              <div className="profile-item">
+                <span>Money</span>
+                <span>{character.money} Ryo</span>
+              </div>
+              <div className="profile-item">
+                <span>Missions</span>
+                <span>{character.completedMissions.length}</span>
+              </div>
             </div>
           </div>
           
           <div className="profile-section">
-            <h3 className="text-orange-400 text-xl mb-3">Combat Stats</h3>
-            <div className="stats-display">
+            <h3 className="card-title">Combat Statistics</h3>
+            <div className="profile-grid">
               {Object.entries(character.stats).map(([stat, value]) => (
-                <div key={stat} className="stat-display">
-                  <span className="stat-name">{stat.charAt(0).toUpperCase() + stat.slice(1)}</span>
-                  <span className="stat-value">{value}</span>
+                <div key={stat} className="profile-item">
+                  <span>{stat.charAt(0).toUpperCase() + stat.slice(1)}</span>
+                  <span>{value}</span>
                 </div>
               ))}
             </div>
           </div>
           
           <div className="profile-section">
-            <h3 className="text-orange-400 text-xl mb-3">Known Jutsu</h3>
-            <div className="jutsu-display">
-              {character.jutsu.map((jutsu, idx) => (
-                <div key={idx} className="jutsu-card">
-                  <span className="jutsu-name">{jutsu.name}</span>
-                  <span className="jutsu-details">
-                    Damage: {jutsu.damage} | Cost: {jutsu.cost} | Type: {jutsu.type}
-                  </span>
+            <h3 className="card-title">Known Jutsu</h3>
+            {character.jutsu.map((jutsu, idx) => (
+              <div key={idx} className="jutsu-profile-card">
+                <div className="jutsu-profile-name">{jutsu.name}</div>
+                <div className="jutsu-profile-details">
+                  Damage: {jutsu.damage} | Chakra: {jutsu.cost} | Type: {jutsu.type}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
           
-          <div className="navigation-buttons">
-            <button className="nav-button" onClick={() => setCurrentScreen('village')}>
+          <div className="nav-container">
+            <button className="btn-secondary" onClick={() => setCurrentScreen('village')}>
               ← Back to Village
             </button>
           </div>
@@ -942,7 +949,7 @@ const NarutoGame = () => {
   };
 
   useEffect(() => {
-    typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Your legend starts here!");
+    typeWriter("Master jutsu, complete missions, battle enemies, and rise through the ninja ranks. Create your legendary ninja and forge your path to greatness in the world of shinobi!");
   }, []);
 
   useEffect(() => {
