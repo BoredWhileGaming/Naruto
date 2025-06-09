@@ -420,13 +420,13 @@ const NarutoGame = () => {
     return timer;
   };
 
-  const saveCharacter = () => {
+  const saveCharacter = React.useCallback(() => {
     try {
       localStorage.setItem('narutoCharacter', JSON.stringify(character));
     } catch (error) {
       console.error('Error saving character:', error);
     }
-  };
+  }, [character.name, character.level, character.xp, character.money, character.clan, character.village, character.jutsu.length, character.completedMissions.length]);
 
   const loadCharacter = () => {
     try {
