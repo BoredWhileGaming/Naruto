@@ -423,27 +423,52 @@ const NarutoGame = () => {
   };
 
   const loadCharacter = () => {
-    const saved = localStorage.getItem('narutoCharacter');
-    if (saved) {
-      const loadedChar = JSON.parse(saved);
-      if (!loadedChar.combat) {
-        loadedChar.combat = {
-          hp: 100,
-          maxHp: 100,
-          chakraPoints: 50,
-          maxChakra: 50
+    try {
+      const saved = localStorage.getItem('narutoCharacter');
+      if (saved) {
+        const loadedChar = JSON.parse(saved);
+        // Ensure all required properties exist
+        const defaultChar = {
+          name: '',
+          clan: '',
+          village: '',
+          level: 1,
+          xp: 0,
+          xpToNext: 100,
+          rank: 'Academy Student',
+          stats: {
+            strength: 10,
+            speed: 10,
+            chakra: 10,
+            intelligence: 10,
+            stamina: 10
+          },
+          combat: {
+            hp: 100,
+            maxHp: 100,
+            chakraPoints: 50,
+            maxChakra: 50
+          },
+          jutsu: [],
+          inventory: [],
+          completedMissions: [],
+          pointsRemaining: 25,
+          money: 100
         };
+        
+        const mergedChar = { ...defaultChar, ...loadedChar };
+        if (!mergedChar.combat) {
+          mergedChar.combat = defaultChar.combat;
+        }
+        
+        setCharacter(mergedChar);
+        return true;
       }
-      if (!loadedChar.level) loadedChar.level = 1;
-      if (!loadedChar.xp) loadedChar.xp = 0;
-      if (!loadedChar.inventory) loadedChar.inventory = [];
-      if (!loadedChar.completedMissions) loadedChar.completedMissions = [];
-      if (!loadedChar.money) loadedChar.money = 100;
-      
-      setCharacter(loadedChar);
-      return true;
+      return false;
+    } catch (error) {
+      console.error('Error loading character:', error);
+      return false;
     }
-    return false;
   };
 
   const adjustStat = (stat, change) => {
