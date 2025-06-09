@@ -532,6 +532,7 @@ const NarutoGame = () => {
                   const savedChar = loadCharacter();
                   if (savedChar) {
                     setCharacter(savedChar);
+                    setHasLoadedCharacter(true);
                     setCurrentScreen('village');
                   } else {
                     setCurrentScreen('name');
