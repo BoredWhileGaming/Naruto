@@ -419,7 +419,11 @@ const NarutoGame = () => {
   };
 
   const saveCharacter = () => {
-    localStorage.setItem('narutoCharacter', JSON.stringify(character));
+    try {
+      localStorage.setItem('narutoCharacter', JSON.stringify(character));
+    } catch (error) {
+      console.error('Error saving character:', error);
+    }
   };
 
   const loadCharacter = () => {
